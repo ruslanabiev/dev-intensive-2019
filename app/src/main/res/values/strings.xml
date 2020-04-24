@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">dev-intensive-2019</string>
+    <string name="bender_robot_description">bender robot</string>
+    <string name="message_hint">Введите текст</string>
+</resources>
