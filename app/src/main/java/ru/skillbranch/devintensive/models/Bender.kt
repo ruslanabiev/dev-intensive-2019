@@ -1,4 +1,4 @@
-package ru.skillbranch.devintensive.model
+package ru.skillbranch.devintensive.models
 
 class Bender(var status: Status = Status.NORMAL, var question: Question = Question.NAME) {
 
@@ -40,25 +40,32 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 
     enum class Question(val question: String, val answer: List<String>) {
         NAME("Как меня зовут?", listOf("бендер", "bender")) {
-            override fun nextQuestion(): Question = PROFESSION
+            override fun nextQuestion(): Question =
+                PROFESSION
         },
         PROFESSION("Назови мою профессию", listOf("сгибальщик", "bender")) {
-            override fun nextQuestion(): Question = MATERIAL
+            override fun nextQuestion(): Question =
+                MATERIAL
         },
         MATERIAL("Из чего я сделан?", listOf("металл", "дерево", "metal", "iron", "wood")) {
-            override fun nextQuestion(): Question = CRITICAL
+            override fun nextQuestion(): Question =
+                CRITICAL
         },
         CRITICAL("Когда меня создали?", listOf("2993")) {
-            override fun nextQuestion(): Question = BDAY
+            override fun nextQuestion(): Question =
+                BDAY
         },
         BDAY("Мой серийный номер?", listOf("2716057")) {
-            override fun nextQuestion(): Question = SERIAL
+            override fun nextQuestion(): Question =
+                SERIAL
         },
         SERIAL("Как меня зовут?", listOf("бендер", "bender")) {
-            override fun nextQuestion(): Question = IDLE
+            override fun nextQuestion(): Question =
+                IDLE
         },
         IDLE("На этом все, вопросов больше нет!", listOf()) {
-            override fun nextQuestion(): Question = NAME
+            override fun nextQuestion(): Question =
+                NAME
         };
 
         abstract fun nextQuestion(): Question

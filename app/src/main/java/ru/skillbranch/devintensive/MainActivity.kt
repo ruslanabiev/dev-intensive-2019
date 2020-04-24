@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
-import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,7 +14,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.skillbranch.devintensive.model.Bender
+import ru.skillbranch.devintensive.extensions.isKeyboardOpen
+import ru.skillbranch.devintensive.models.Bender
 import java.util.*
 
 
@@ -40,7 +40,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val status = savedInstanceState?.getString("STATUS") ?: Bender.Status.NORMAL.name
         val question = savedInstanceState?.getString("QUESTION") ?: Bender.Question.NAME.name
 
-        benderObj = Bender(Bender.Status.valueOf(status), Bender.Question.valueOf(question))
+        benderObj = Bender(
+            Bender.Status.valueOf(status),
+            Bender.Question.valueOf(question)
+        )
 
         Log.d("M_MainActivity", "onCreate $status $question")
 
@@ -122,18 +125,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
-    }
-
-    private fun Activity.isKeyboardOpen(): Boolean {
-
-        val r = Rect()
-
-        activityRoot.getWindowVisibleDisplayFrame(r)
-
-        val screenHeight: Int = activityRoot.rootView.height
-        val keypadHeight = screenHeight - r.bottom
-
-        return (keypadHeight > screenHeight * 0.15)
     }
 
 }
