@@ -2,7 +2,7 @@ package ru.skillbranch.devintensive.extensions
 
 import android.app.Activity
 import android.graphics.Rect
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_profile.*
 
 fun Activity.isKeyboardOpen(): Boolean {
 
